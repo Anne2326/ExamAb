@@ -74,7 +74,7 @@ namespace FitnessProgramManagementSystem.Repositary
         }
 
 
-        public string GetAll(FitnessProgram fitnessProgram)
+        public string GetAll()
         {
 
             using (SqlConnection connection = new SqlConnection(ConnectionString))
@@ -90,7 +90,7 @@ namespace FitnessProgramManagementSystem.Repositary
                     string returnstr = "";
                     while (reader.Read()) {
 
-                        returnstr += ($"FitnessProgramId{reader["FitnessProgramId"]},Title{reader["Title"]},Duration{reader["Duration"]},Price{reader["Price"]}");
+                        returnstr += ($"FitnessProgramId{reader["FitnessProgramId"]},Title{reader["Title"]},Duration{reader["Duration"]},Price{reader["Price"]}\n");
 
 
 

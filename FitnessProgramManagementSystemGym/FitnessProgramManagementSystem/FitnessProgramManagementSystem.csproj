@@ -45,6 +45,8 @@
   <ItemGroup>
     <Compile Include="Entity\FitnessProgram.cs" />
     <Compile Include="Entity\FitnessProgramManager.cs" />
+    <Compile Include="Entity\GroupFitnessProgram.cs" />
+    <Compile Include="Entity\IndividualFitnessProgram.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositary\FitnessProgramRepository.cs" />

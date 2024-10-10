@@ -19,7 +19,7 @@ namespace FitnessProgramManagementSystem.Entity
             Duration = duration;
             Price = price;
         }
-
+        public FitnessProgram() { }
         public int FitnessProgramId { get; set; }
         public string Title { get; set; }
         public string Duration { get; set; }
@@ -31,7 +31,10 @@ namespace FitnessProgramManagementSystem.Entity
                 
                 }
 
-
+        public virtual string DisplayFitnessProgramInfo()
+        {
+            return $"ID: {FitnessProgramId}, Title: {Title}, Duration: {Duration}, Price: {Price}";
+        }
 
 
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FitnessProgramManagementSystem.Repositary;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,14 +11,14 @@ namespace FitnessProgramManagementSystem.Entity
     {
 
      public List<FitnessProgram> FitnessProgramList=new List<FitnessProgram>();
-
+    public FitnessProgramRepository fitnessProgramRepository = new FitnessProgramRepository();
 
         public void CreateFitnessProgram()
         {
 
             Console.WriteLine("Enter FitnessProgram Title:");
             var title=Console.ReadLine();
-
+            
             Console.WriteLine("Enter FitnessProgram Duration:");
             var duration = Console.ReadLine();
 
@@ -28,8 +29,8 @@ namespace FitnessProgramManagementSystem.Entity
 
             var program = new FitnessProgram((FitnessProgramList.Count + 1), title, duration, Rentalprice);
 
-
-            FitnessProgramList.Add(program);
+            fitnessProgramRepository.CreateFitnessProgram(program);
+            //FitnessProgramList.Add(program);
 
         }
 
@@ -37,23 +38,22 @@ namespace FitnessProgramManagementSystem.Entity
         public void ReadFitnessPrograms()
         {
 
-            Console.WriteLine("Enter Program Id");
-            var id = Console.ReadLine();
+            //if (FitnessProgramList.Count > 0)
+            //{
 
-            var program = FitnessProgramList.Find(p => p.FitnessProgramId == int.Parse(id));
+            //    foreach (var programs in FitnessProgramList)
+            //    {
 
-            if (program == null)
-            {
-
-                foreach (var programs in FitnessProgramList)
-                {
-
-                    Console.WriteLine(programs);
-                }
+            //        Console.WriteLine(programs.ToString());
+            //    }
 
 
-            }
-
+            //}
+            //else
+            //{
+            //    Console.WriteLine("No fitnessprograms available");
+            //}
+            Console.WriteLine(fitnessProgramRepository.GetAll());
 
         }
 
@@ -65,34 +65,35 @@ namespace FitnessProgramManagementSystem.Entity
 
             var program = FitnessProgramList.Find(p => p.FitnessProgramId == int.Parse(id));
 
-            if (program == null)
+            if (program != null)
             {
 
                 Console.WriteLine("Enter the FitnessProgram ID to update:");
-                var newid=int.Parse(Console.ReadLine());
+                var newid = int.Parse(Console.ReadLine());
                 Console.WriteLine("Enter new Title:");
                 var title = Console.ReadLine();
                 Console.WriteLine("Enter new Duration: ");
                 var duration = Console.ReadLine();
                 Console.WriteLine("Enter new Price:");
-                var price =Convert.ToInt16(Console.ReadLine());
+                var price = Convert.ToInt16(Console.ReadLine());
 
 
-
-                program.FitnessProgramId = newid;
-                program.Title = title;
-                program.Duration = duration;
-                program.Price = price;
+                var NProgram = new FitnessProgram(){
 
 
+                    Title = title,
+                    Duration = duration,
+                    Price = price
+
+                };
 
 
-
-
-            }
-
+                fitnessProgramRepository.UpdateProgram(NProgram);
 
             }
+           
+
+        }
 
 
 
@@ -100,15 +101,16 @@ namespace FitnessProgramManagementSystem.Entity
         public void DeleteFitnessProgram()
         {
             Console.WriteLine("Enter Program Id");
-            var id = Console.ReadLine();
+            var id = Convert.ToInt32(Console.ReadLine());
 
-            var program = FitnessProgramList.Find(p => p.FitnessProgramId == int.Parse(id));
+            var program = FitnessProgramList.Find(p => p.FitnessProgramId == id);
 
-            if (program == null)
+            if (program != null)
             {
 
-                FitnessProgramList.Remove(program);
+                //FitnessProgramList.Remove(program);
 
+                fitnessProgramRepository.DeleteProgram(id);
 
 
 
@@ -152,7 +154,14 @@ namespace FitnessProgramManagementSystem.Entity
         }
 
 
-
+        public string CapitalizeTitle(string title) {
+        
+        string firstletter=title.Substring(0,1);
+            string remaing=title.Substring(1,title.Length-1);
+            return $"{firstletter.ToUpper()}{remaing}";
+        
+        
+        }
 
 
 

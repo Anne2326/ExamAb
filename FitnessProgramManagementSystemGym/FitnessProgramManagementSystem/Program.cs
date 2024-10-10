@@ -22,49 +22,53 @@ namespace FitnessProgramManagementSystem
 
             var admin = new FitnessProgramManager();
 
+            while (true) {
+                Console.WriteLine("FitnessProgram Management System:");
 
-            Console.WriteLine("FitnessProgram Management System:");
+                Console.WriteLine("1. Add a FitnessProgram");
 
-            Console.WriteLine("1. Add a FitnessProgram");
+                Console.WriteLine("2. View All FitnessPrograms");
 
-            Console.WriteLine("2. View All FitnessPrograms");
-
-            Console.WriteLine("3. Update a FitnessProgram");
-
-
-            Console.WriteLine("4. Delete a FitnessProgram");
-
-            Console.WriteLine("5. Exit");
-            Console.Write("Choose an option:");
+                Console.WriteLine("3. Update a FitnessProgram");
 
 
+                Console.WriteLine("4. Delete a FitnessProgram");
 
+                Console.WriteLine("5. Exit");
+                Console.Write("Choose an option:");
+                var MenuInput = Console.ReadLine();
+                switch (MenuInput)
+                {
 
-
-
-
-            var MenuInput=Console.ReadLine();
-            switch (MenuInput) {
-
-                case "1":
-                    admin.CreateFitnessProgram();
-                    break;
+                    case "1":
+                        admin.CreateFitnessProgram();
+                        break;
                     case "2":
-                    admin.ReadFitnessPrograms();
-                    break;
+                        admin.ReadFitnessPrograms();
+                        break;
                     case "3":
-                    admin.UpdateFitnessProgram();
-                    break;
+                        admin.UpdateFitnessProgram();
+                        break;
                     case "4":
-                    admin.DeleteFitnessProgram();
-                    break;
+                        admin.DeleteFitnessProgram();
+                        break;
                     case "5":
-                    Console.WriteLine("Thank you");
-                    break;
+                        Console.WriteLine("Thank you");
+                        break;
                     default:
-                    Console.Clear();
-                    Menu();
-                    break;
+                        Console.Clear();
+                        Menu();
+                        break;
+
+
+                }
+
+
+
+
+
+
+            
 
 
 

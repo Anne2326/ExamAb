@@ -8,6 +8,10 @@ namespace FitnessProgramManagementSystem.Entity
 {
     internal class FitnessProgram
     {
+        public FitnessProgram(int v)
+        {
+        }
+
         public FitnessProgram(int fitnessProgramId, string title, string duration, decimal price)
         {
             FitnessProgramId = fitnessProgramId;

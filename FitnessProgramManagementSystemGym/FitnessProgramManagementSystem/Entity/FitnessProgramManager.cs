@@ -117,24 +117,39 @@ namespace FitnessProgramManagementSystem.Entity
 
         }
 
-        //public decimal ValidateFitnessProgramPrice()
-        //{
-        //    decimal price = 0;
+        public decimal ValidateFitnessProgramPrice()
+        {
+            decimal price = 0;
 
-        //    while (true) {
+            while (true)
+            {
 
-        //        Console.WriteLine("Enter FitnessProgram price:");
-            
-            
-            
-        //    }
+                Console.WriteLine("Enter FitnessProgram price:");
+                var Rentelprice=decimal.Parse(Console.ReadLine());
+
+                if (Rentelprice > 0)
+                {
+
+                    Rentelprice = price;
+
+
+
+                }
+
+                else
+                {
+                    Console.WriteLine("Your value is incorrect");
+                }
+
+
+            }
 
 
 
 
 
 
-        //}
+        }
 
 
 
